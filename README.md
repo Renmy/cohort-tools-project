@@ -49,4 +49,4 @@ Below you will find the available endpoints of the backend API made with express
 - You must create a .env file in the client root with the following global variable VITE_API_URL="your-backend-server-config"
 - "cd server" and "npm run dev"
 - open a new terminal, "cd client" and "npm run dev"
-  -Enjoy the project! 🥰
+- Enjoy the project! 🥰
