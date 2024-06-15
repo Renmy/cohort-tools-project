@@ -1,5 +1,6 @@
 const router = require("express").Router();
-const Cohort = require("../models/Cohort.model");
+const Cohort = require("../models/Cohort.model.js");
+
 //concatenate router in app.js with router. ex: http://localhost:8080/api/cohorts/create
 router.post("/", async (req, res) => {
   try {

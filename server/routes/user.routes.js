@@ -2,6 +2,7 @@ const router = require("express").Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User.model.js");
+const isAuth = require("../middlewares/jwt.middleware.js");
 
 router.post("/signup", async (req, res) => {
   try {
@@ -34,7 +35,10 @@ router.post("/signup", async (req, res) => {
       return;
     }
     //Once all validations passed proceed to create the User and add it to the DB
-    const hashedPassword = await bcrypt.hash(password, bcrypt.genSalt(10));
+    const hashedPassword = await bcrypt.hash(
+      password,
+      await bcrypt.genSalt(10)
+    );
     const createdUser = await User.create({
       name,
       email,
@@ -78,6 +82,15 @@ router.post("/login", async (req, res) => {
       { algorithm: "HS256", expiresIn: "24h" }
     );
     res.json({ user, jwtToken });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error);
+  }
+});
+
+router.post("/verify", isAuth, async (req, res) => {
+  try {
+    res.json({ message: "User is logged in", user: req.user });
   } catch (error) {
     console.log(error);
     res.status(500).json(error);

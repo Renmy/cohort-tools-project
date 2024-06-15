@@ -9,8 +9,9 @@ const cors = require("cors");
 //dotenv config for DB URI
 require("dotenv").config();
 //importing routers
-const cohortRouter = require("./routes/cohort.routes");
-const studentRouter = require("./routes/student.routes");
+const cohortRouter = require("./routes/cohort.routes.js");
+const studentRouter = require("./routes/student.routes.js");
+const userRouter = require("./routes/user.routes.js");
 
 // STATIC DATA
 // Devs Team - Import the provided files with JSON data of students and cohorts here:
@@ -39,6 +40,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use("/api/cohorts", cohortRouter);
 app.use("/api/students", studentRouter);
+app.use("/api/users", userRouter);
 
 // ROUTES - https://expressjs.com/en/starter/basic-routing.html
 // Devs Team - Start working on the routes here:
