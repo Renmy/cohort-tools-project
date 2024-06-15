@@ -41,3 +41,12 @@ Below you will find the available endpoints of the backend API made with express
 | HTTP Verb | URL                  | Request Body | Action                                                                |
 | --------- | -------------------- | ------------ | --------------------------------------------------------------------- |
 | GET       | `/api/users/:userId` | (empty)      | Protected Route by JWT Middleware, Returns the user info if logged in |
+
+# For Correct functioning:
+
+- After forking/cloning the repo need to run "npm install" on terminal
+- You must create a .env file in the server root with the following global variables MONGODB_URI="your-DB-connection-string", TOKEN_SIGN_SECRET="your-secret-phrase-for-jwt-encrypt/decrypt"(could be anything you want, Example: banana 😊)
+- You must create a .env file in the client root with the following global variable VITE_API_URL="your-backend-server-config"
+- "cd server" and "npm run dev"
+- open a new terminal, "cd client" and "npm run dev"
+  -Enjoy the project! 🥰
