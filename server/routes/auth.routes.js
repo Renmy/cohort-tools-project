@@ -58,7 +58,7 @@ router.post("/login", async (req, res) => {
     if (!(name || email) || !password) {
       return res
         .status(400)
-        .json({ message: "Please provide a name, email and password" });
+        .json({ message: "Please provide a valid email and password" });
     }
     //Try to find the user in the DB
     const user = await User.findOne({ $or: [{ email }, { name }] });
@@ -91,17 +91,6 @@ router.post("/login", async (req, res) => {
 router.get("/verify", isAuth, async (req, res) => {
   try {
     res.json({ message: "User is logged in", user: req.user });
-  } catch (error) {
-    console.log(error);
-    res.status(500).json(error);
-  }
-});
-
-router.get("/:userId", isAuth, async (req, res) => {
-  try {
-    const { userId } = req.params;
-    const user = await User.findById(userId);
-    res.json(user);
   } catch (error) {
     console.log(error);
     res.status(500).json(error);
