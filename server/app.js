@@ -11,6 +11,7 @@ require("dotenv").config();
 //importing routers
 const cohortRouter = require("./routes/cohort.routes.js");
 const studentRouter = require("./routes/student.routes.js");
+const authRouter = require("./routes/auth.routes.js");
 const userRouter = require("./routes/user.routes.js");
 
 // STATIC DATA
@@ -40,6 +41,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use("/api/cohorts", cohortRouter);
 app.use("/api/students", studentRouter);
+app.use("/auth", authRouter);
 app.use("/api/users", userRouter);
 
 // ROUTES - https://expressjs.com/en/starter/basic-routing.html
@@ -67,6 +69,5 @@ app.get("/docs", (req, res) => {
 app.listen(PORT, () => {
   console.clear();
   connectDB();
-
   console.log(`Server listening on port ${PORT}`);
 });

@@ -1,5 +1,4 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+const { Schema, model } = require("mongoose");
 
 const cohortSchema = new Schema({
   cohortSlug: { type: String, unique: true, required: true },
@@ -31,6 +30,4 @@ const cohortSchema = new Schema({
   // students: [{ type: Schema.Types.ObjectId, ref: "Student" }],
 });
 
-const Cohort = mongoose.model("Cohort", cohortSchema);
-
-module.exports = Cohort;
+module.exports = model("Cohort", cohortSchema);

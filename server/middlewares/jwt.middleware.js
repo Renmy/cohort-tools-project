@@ -27,7 +27,7 @@ async function isAuth(req, res, next) {
 
     //we then assign a custom req property called user
     //and the value will be the object from the token
-    req.user = verified.payload;
+    req.user = verified.payload.user;
 
     //since it's a middleware we have to call next() so the route runs
     next();

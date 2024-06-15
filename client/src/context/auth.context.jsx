@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-
 // Import the string from the .env with URL of the API/server - http://localhost:5005
 const API_URL = import.meta.env.VITE_API_URL;
-
 
 const AuthContext = React.createContext();
 
@@ -31,7 +29,7 @@ function AuthProviderWrapper(props) {
         })
         .then((response) => {
           // If the server verifies that JWT token is valid
-          const user = response.data;
+          const user = response.data.user;
           // Update state variables
           setIsLoggedIn(true);
           setIsLoading(false);
